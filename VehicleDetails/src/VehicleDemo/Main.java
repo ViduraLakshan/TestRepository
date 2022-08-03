@@ -81,7 +81,6 @@ public class Main {
 
     public static void drive(String numberPlate) {
         List ob = vehicles.get(numberPlate);
-
         System.out.println("You are driving " + ob.get(4) + " Engine " + ob.get(1) + " with " + ob.get(7) + " Stroke");
 
     }
@@ -91,7 +90,6 @@ public class Main {
         printVehicle(numberPlate);
         vehicles.remove(numberPlate);
     }
-
     public static boolean checkNumberPlate(String numberPlate) {
         if (numberPlate.length() == 7) {
             return true;
