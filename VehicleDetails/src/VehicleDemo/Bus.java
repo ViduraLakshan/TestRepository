@@ -1,8 +1,5 @@
 package VehicleDemo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Bus extends HeavyVehicle{
     private final String number_of_wheels="6";
     private String fuel;
@@ -32,18 +29,44 @@ public class Bus extends HeavyVehicle{
     public String getVehicle() {
         return vehicle;
     }
-    public List<String> getVehicleDetails()
+    public void drive(Bus bus)
     {
-        List<String>bus=new ArrayList<>();
-        bus.add(getVehicle_type());
-        bus.add(getVehicle());
-        bus.add(getNumber_plate());
-        bus.add(getModel_number());
-        bus.add(getFuel());
-        bus.add(getNumber_of_wheels());
-        bus.add(getEngin().getEmginNumber());
-        bus.add(getEngin().getNumber_of_stroke());
-        bus.add(getSafety());
-        return bus;
+        System.out.println("You are driving "+fuel+" Engine "+vehicle+" with "+bus.getEngin().getNumber_of_stroke()+" Stroke");
+    }
+    public void printById(Bus bus)
+    {
+        System.out.println("Vehicle Type : " + bus.getVehicle_type() + "\n" +
+                "Vehicle : " + bus.getVehicle() + "\n" +
+                "NumberPlate : " + bus.getNumber_plate() + "\n" +
+                "ModelNumber : " + bus.getModel_number() + "\n" +
+                "Fuel : " + bus.getFuel() + "\n" +
+                "NoOfWheels : " + bus.getNumber_of_wheels()+ "\n" +
+                "Engine : EngineNo - " + bus.getEngin().getEnginNumber() + ", Stroke - " + bus.getEngin().getNumber_of_stroke() + "\n" +
+                "Safety. : " + bus.getSafety() + "");
+    }
+    public void printItemOfVehicle(Bus bus, String sNumber) {
+
+        int number = Integer.parseInt(sNumber);
+        switch (number) {
+            case 1 -> System.out.println("Vehicle Type : " + bus.getVehicle_type());
+            case 2 -> System.out.println("Vehicle : " + bus.getVehicle());
+            case 3 -> System.out.println("Model Number : " + bus.getModel_number());
+            case 4 -> System.out.println("Fuel : " + bus.getFuel());
+            case 5 -> System.out.println("Number of Wheels : " + bus.getNumber_of_wheels());
+            case 6 -> System.out.println("Engine : " + bus.getEngin().getEnginNumber());
+            case 7 -> System.out.println("Safety : " + bus.getSafety());
+            default -> System.out.println("Invalid Number");
+        }
+    }
+    public void PrintAllBike(Bus bus)
+    {
+
+        System.out.println(bus.getVehicle_type() +" "+ bus.getVehicle() +"   "+
+                bus.getNumber_plate() +"  "+
+                bus.getModel_number() +"   "+
+                bus.getFuel() +"   "+
+                bus.getNumber_of_wheels()+"   "+
+                bus.getEngin().getEnginNumber() +"  "+  bus.getEngin().getNumber_of_stroke() +"  "+
+                bus.getSafety());
     }
 }

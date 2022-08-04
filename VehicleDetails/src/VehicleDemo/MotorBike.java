@@ -1,8 +1,5 @@
 package VehicleDemo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MotorBike extends LightVehicle {
     private final String number_of_wheels="2";
     private final String fuel="Petrol";
@@ -33,22 +30,45 @@ public class MotorBike extends LightVehicle {
     public String getVehicle() {
         return vehicle;
     }
-    public void drive()
+    public void drive(MotorBike motorBike)
     {
-        System.out.println("You are driving "+fuel+" Engine "+vehicle+" with "+" Stroke");
+        System.out.println("You are driving "+fuel+" Engine "+vehicle+" with "+motorBike.getEngin().getNumber_of_stroke()+" Stroke");
     }
-    public List<String> getVehicleDetails()
+
+    public void printById(MotorBike motorBike)
     {
-        List<String>motorBike=new ArrayList<>();
-        motorBike.add(getVehicle_type());
-        motorBike.add(getVehicle());
-        motorBike.add(getNumber_plate());
-        motorBike.add(getModel_number());
-        motorBike.add(getFuel());
-        motorBike.add(getNumber_of_wheels());
-        motorBike.add(getEngin().getEmginNumber());
-        motorBike.add(getEngin().getNumber_of_stroke());
-        motorBike.add(getSafety());
-        return motorBike;
+        System.out.println("Vehicle Type : " + motorBike.getVehicle_type() + "\n" +
+                "Vehicle : " + motorBike.getVehicle() + "\n" +
+                "NumberPlate : " + motorBike.getNumber_plate() + "\n" +
+                "ModelNumber : " + motorBike.getModel_number() + "\n" +
+                "Fuel : " + motorBike.getFuel() + "\n" +
+                "NoOfWheels : " + motorBike.getNumber_of_wheels()+ "\n" +
+                "Engine : EngineNo - " + motorBike.getEngin().getEnginNumber() + ", Stroke - " + motorBike.getEngin().getNumber_of_stroke() + "\n" +
+                "Safety. : " + motorBike.getSafety() + "");
+    }
+    public void printItemOfVehicle(MotorBike motorBike, String sNumber) {
+
+        int number = Integer.parseInt(sNumber);
+        switch (number) {
+            case 1 -> System.out.println("Vehicle Type : " + motorBike.getVehicle_type());
+            case 2 -> System.out.println("Vehicle : " + motorBike.getVehicle());
+            case 3 -> System.out.println("Model Number : " + motorBike.getModel_number());
+            case 4 -> System.out.println("Fuel : " + motorBike.getFuel());
+            case 5 -> System.out.println("Number of Wheels : " + motorBike.getNumber_of_wheels());
+            case 6 -> System.out.println("Engine : " + motorBike.getEngin().getEnginNumber());
+            case 7 -> System.out.println("Safety : " + motorBike.getSafety());
+            default ->System.out.println("Invalid Number");
+        }
+    }
+    public void PrintAllBike(MotorBike motorBike)
+    {
+
+        System.out.println(motorBike.getVehicle_type() +" "+ motorBike.getVehicle() +"   "+
+                  motorBike.getNumber_plate() +"  "+
+                motorBike.getModel_number() +"   "+
+                motorBike.getFuel() +"   "+
+                 motorBike.getNumber_of_wheels()+"   "+
+                 motorBike.getEngin().getEnginNumber() +"  "+  motorBike.getEngin().getNumber_of_stroke() +"  "+
+                 motorBike.getSafety());
     }
 }

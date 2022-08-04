@@ -17,6 +17,10 @@ public class Vehicle {
         this.number_of_wheels = number_of_wheels;
 
     }
+    public Vehicle()
+    {
+
+    }
 
     public String getNumber_plate() {
         return number_plate;

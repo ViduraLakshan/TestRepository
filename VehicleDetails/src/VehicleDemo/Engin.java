@@ -1,10 +1,10 @@
 package VehicleDemo;
 
 public class Engin {
-    private String number_of_stroke;
-    private String enginNumber;
+    private final String number_of_stroke;
+    private final String enginNumber;
 
-    public Engin(String number_of_stroke, String enginNumber) {
+    public Engin(String enginNumber, String number_of_stroke) {
         this.number_of_stroke = number_of_stroke;
         this.enginNumber = enginNumber;
     }
@@ -13,7 +13,7 @@ public class Engin {
         return number_of_stroke;
     }
 
-    public String getEmginNumber() {
+    public String getEnginNumber() {
         return enginNumber;
     }
 }

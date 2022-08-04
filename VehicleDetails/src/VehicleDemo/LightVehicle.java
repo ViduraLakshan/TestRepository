@@ -10,6 +10,7 @@ public class LightVehicle extends Vehicle{
         //this.fuel=fuel;
 
     }
+    public LightVehicle(){}
 
     public String getVehicle_type() {
         return vehicle_type;

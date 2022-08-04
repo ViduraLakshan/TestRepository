@@ -2,7 +2,7 @@ package VehicleDemo;
 
 public class HeavyVehicle extends Vehicle{
 
-    private String vehicle_type;
+    private final String vehicle_type;
     private String fuel;
 
 

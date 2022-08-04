@@ -1,77 +1,141 @@
 package VehicleDemo;
 
-import java.lang.reflect.GenericArrayType;
 import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class Main {
-    static HashMap<String, List> vehicles = new HashMap<>();
-    static List<MotorBike> motorBikesList = new ArrayList<>();
-    static List<AutoRickshow> autoRickshawsList = new ArrayList<>();
-    static List<Car> carsList = new ArrayList<>();
-    static List<Bus> busesList = new ArrayList<>();
-    static List<Lorry> lorriesList = new ArrayList<>();
-    static List<Truck> trucksList = new ArrayList<>();
-    static HashMap<String,Vehicle> vehicleList=new HashMap<>();
+
+    static HashMap<String, Vehicle> vehicles = new HashMap<>();
+
     public static void printVehicle(String number_plate) {
-        List ob = vehicles.get(number_plate);
 
-        MotorBike ob1 = (MotorBike) vehicleList.get(number_plate);
-        ob1.getVehicleDetails();
-
-        System.out.println("Vehicle Type : " + ob.get(0) + "\n" +
-                "Vehicle : " + ob.get(1) + "\n" +
-                "NumberPlate : " + ob.get(2) + "\n" +
-                "ModelNumber : " + ob.get(3) + "\n" +
-                "Fuel : " + ob.get(4) + "\n" +
-                "NoOfWheels : " + ob.get(5) + "\n" +
-                "Engine : EngineNo - " + ob.get(6) + ", Stroke - " + ob.get(7) + "\n" +
-                "Safety. : " + ob.get(8) + "");
-
-    }
-
-    public static void printItemOfVehicle(String numberPlate, String sNumber) {
-        List ob = vehicles.get(numberPlate);
-        int number = Integer.parseInt(sNumber);
-        switch (number) {
-            case 1 -> System.out.println("Vehicle Type : " + ob.get(0));
-            case 2 -> System.out.println("Vehicle : " + ob.get(1));
-            case 3 -> System.out.println("Model Number : " + ob.get(3));
-            case 4 -> System.out.println("Fuel : " + ob.get(4));
-            case 5 -> System.out.println("Number of Wheels : " + ob.get(5));
-            case 6 -> System.out.println("Engine : " + ob.get(6));
-            case 7 -> System.out.println("Safety : " + ob.get(8));
-            default -> {
-                System.out.println("Invalid Number");
-            }
+        Vehicle vehicle = vehicles.get(number_plate);
+        if (vehicle instanceof MotorBike) {
+            MotorBike motorBike = (MotorBike) vehicles.get(number_plate);
+            motorBike.printById(motorBike);
+        } else if (vehicle instanceof AutoRickshaw) {
+            AutoRickshaw autoRickshaw = (AutoRickshaw) vehicles.get(number_plate);
+            autoRickshaw.printById(autoRickshaw);
+        } else if (vehicle instanceof Car) {
+            Car car = (Car) vehicles.get(number_plate);
+            car.printById(car);
+        } else if (vehicle instanceof Bus) {
+            Bus bus = (Bus) vehicles.get(number_plate);
+            bus.printById(bus);
+        } else if (vehicle instanceof Lorry) {
+            Lorry lorry = (Lorry) vehicles.get(number_plate);
+            lorry.printById(lorry);
+        } else if (vehicle instanceof Truck) {
+            Truck truck = (Truck) vehicles.get(number_plate);
+            truck.printById(truck);
+        } else {
+            System.out.println("This Vehicle is not Available ! ");
         }
     }
 
-    public static void printAllVehicleByType(String vehicle) {
-        if (vehicle.equals("Bike") || vehicle.equals("bike")) {
-            for (MotorBike details : motorBikesList) {
-                System.out.println(details.getVehicleDetails());
+    public static void printItemOfVehicle(String numberPlate, String sNumber) {
+        Vehicle vehicle = vehicles.get(numberPlate);
+        if (vehicle instanceof MotorBike) {
+
+            MotorBike motorBike = (MotorBike) vehicles.get(numberPlate);
+            motorBike.printItemOfVehicle(motorBike, sNumber);
+        } else if (vehicle instanceof AutoRickshaw) {
+            AutoRickshaw autoRickshaw = (AutoRickshaw) vehicles.get(numberPlate);
+            autoRickshaw.printItemOfVehicle(autoRickshaw, sNumber);
+        } else if (vehicle instanceof Car) {
+            Car car = (Car) vehicles.get(numberPlate);
+            car.printItemOfVehicle(car, sNumber);
+        } else if (vehicle instanceof Bus) {
+            Bus bus = (Bus) vehicles.get(numberPlate);
+            bus.printItemOfVehicle(bus, sNumber);
+        } else if (vehicle instanceof Lorry) {
+            Lorry lorry = (Lorry) vehicles.get(numberPlate);
+            lorry.printItemOfVehicle(lorry, sNumber);
+        } else if (vehicle instanceof Truck) {
+            Truck truck = (Truck) vehicles.get(numberPlate);
+            truck.printItemOfVehicle(truck, sNumber);
+        } else {
+            System.out.println("This Vehicle is not Available ! ");
+        }
+    }
+
+    public static void drive(String numberPlate) {
+        Vehicle vehicle = vehicles.get(numberPlate);
+        if (vehicle instanceof MotorBike) {
+            MotorBike motorBike = (MotorBike) vehicles.get(numberPlate);
+            motorBike.drive(motorBike);
+        } else if (vehicle instanceof AutoRickshaw) {
+            AutoRickshaw autoRickshaw = (AutoRickshaw) vehicles.get(numberPlate);
+            autoRickshaw.drive(autoRickshaw);
+        } else if (vehicle instanceof Car) {
+            Car car = (Car) vehicles.get(numberPlate);
+            car.drive(car);
+        } else if (vehicle instanceof Bus) {
+            Bus bus = (Bus) vehicles.get(numberPlate);
+            bus.drive(bus);
+        } else if (vehicle instanceof Lorry) {
+            Lorry lorry = (Lorry) vehicles.get(numberPlate);
+            lorry.drive(lorry);
+        } else if (vehicle instanceof Truck) {
+            Truck truck = (Truck) vehicles.get(numberPlate);
+            truck.drive(truck);
+        } else {
+            System.out.println("This Vehicle is not Available ! ");
+        }
+    }
+
+    public static void printAllVehicleByType(String vehicleType) {
+
+
+
+        if (vehicleType.equals("Bike") || vehicleType.equals("bike")) {
+
+            for (String key: vehicles.keySet()) {
+                if(vehicles.get(key) instanceof MotorBike)
+                {
+                    MotorBike motorBike= (MotorBike) vehicles.get(key);
+                    motorBike.PrintAllBike(motorBike);
+                }
             }
-        } else if (vehicle.equals("Auto") || vehicle.equals("auto")) {
-            for (AutoRickshow details : autoRickshawsList) {
-                System.out.println(details.getVehicleDetails());
+
+        } else if (vehicleType.equals("Auto") || vehicleType.equals("auto")) {
+            for (String key: vehicles.keySet()) {
+                if(vehicles.get(key) instanceof AutoRickshaw)
+                {
+                    AutoRickshaw autoRickshaw= (AutoRickshaw) vehicles.get(key);
+                    autoRickshaw.PrintAllBike(autoRickshaw);
+                }
             }
-        } else if (vehicle.equals("Car") || vehicle.equals("car")) {
-            for (Car details : carsList) {
-                System.out.println(details.getVehicleDetails());
+        } else if (vehicleType.equals("Car") || vehicleType.equals("car")) {
+            for (String key: vehicles.keySet()) {
+                if(vehicles.get(key) instanceof Car)
+                {
+                    Car car= (Car) vehicles.get(key);
+                    car.PrintAllBike(car);
+                }
             }
-        } else if (vehicle.equals("Bus") || vehicle.equals("bus")) {
-            for (Bus details : busesList) {
-                System.out.println(details.getVehicleDetails());
+        } else if (vehicleType.equals("Bus") || vehicleType.equals("bus")) {
+            for (String key: vehicles.keySet()) {
+                if(vehicles.get(key) instanceof Bus)
+                {
+                    Bus bus= (Bus) vehicles.get(key);
+                    bus.PrintAllBike(bus);
+                }
             }
-        } else if (vehicle.equals("Lorry") || vehicle.equals("lorry")) {
-            for (Lorry details : lorriesList) {
-                System.out.println(details.getVehicleDetails());
+        } else if (vehicleType.equals("Lorry") || vehicleType.equals("lorry")) {
+            for (String key: vehicles.keySet()) {
+                if(vehicles.get(key) instanceof Lorry)
+                {
+                    Lorry lorry= (Lorry) vehicles.get(key);
+                    lorry.PrintAllBike(lorry);
+                }
             }
-        } else if (vehicle.equals("Truck") || vehicle.equals("truck")) {
-            for (Truck details : trucksList) {
-                System.out.println(details.getVehicleDetails());
+        } else if (vehicleType.equals("Truck") || vehicleType.equals("truck")) {
+            for (String key: vehicles.keySet()) {
+                if(vehicles.get(key) instanceof Truck)
+                {
+                    Truck truck= (Truck) vehicles.get(key);
+                    truck.PrintAllBike(truck);
+                }
             }
         } else {
             System.out.println("Vehicle not found !");
@@ -79,17 +143,13 @@ public class Main {
 
     }
 
-    public static void drive(String numberPlate) {
-        List ob = vehicles.get(numberPlate);
-        System.out.println("You are driving " + ob.get(4) + " Engine " + ob.get(1) + " with " + ob.get(7) + " Stroke");
-
-    }
 
     public static void deleteVehicle(String numberPlate) {
         System.out.println("Vehicle Deleted successfully");
         printVehicle(numberPlate);
         vehicles.remove(numberPlate);
     }
+
     public static boolean checkNumberPlate(String numberPlate) {
         if (numberPlate.length() == 7) {
             return true;
@@ -125,7 +185,6 @@ public class Main {
             return false;
         }
     }
-
     public static boolean checkFuel(String fuel) {
         try {
             if (Objects.equals(fuel, "Petrol")) {
@@ -141,13 +200,11 @@ public class Main {
             return true;
         }
     }
-
-    public static boolean checkHelmet(String helmet,String vehicleType) {
+    public static boolean checkHelmet(String helmet, String vehicleType) {
 
         if (helmet.equals("Helmet") == vehicleType.equals("T") == vehicleType.equals("L") == vehicleType.equals("B") == vehicleType.equals("C") != vehicleType.equals("A")) {
             return true;
-        }else
-        {
+        } else {
             System.out.println("Bike only support Helmet");
             return false;
         }
@@ -165,7 +222,7 @@ public class Main {
     public static void addVehicle(String[] array) {
         if (array.length == 7 || array.length == 5) {
 
-            String vehicle=array[0];
+            String vehicle = array[0];
             String numberPlate = array[1];
             String modelNumber = array[2];
             String engineNumber = array[3];
@@ -203,57 +260,50 @@ public class Main {
                 if (vehicle.equals("M")) {
                     safety = "Helmet";
                 }
-
             }
-
             if (checkNumberPlate(numberPlate) && checkModelNumber(modelNumber) && checkStroke(numberOfStroke) && checkVehicleAlreadyExists(numberPlate)) {
-                if (array[0].equals("M") && checkHelmet(safety,vehicle)) {
+                if (array[0].equals("M") && checkHelmet(safety, vehicle)) {
                     Engin engin = new Engin(engineNumber, numberOfStroke);
                     MotorBike motorBike = new MotorBike(numberPlate, modelNumber, engin, "2", fuel, safety);
-                    vehicles.put(motorBike.getNumber_plate(), motorBike.getVehicleDetails());
+                    vehicles.put(motorBike.getNumber_plate(), motorBike);
                     System.out.println("Vehicle Add Successfully");
-                    motorBikesList.add(motorBike);
-                    vehicleList.put(motorBike.getNumber_plate(),motorBike);
-                    printVehicle(motorBike.getNumber_plate());
 
-                } else if (vehicle.equals("A")&&checkHelmet(safety,vehicle)) {
+
+                    motorBike.printById(motorBike);
+
+                } else if (vehicle.equals("A") && checkHelmet(safety, vehicle)) {
                     Engin engin = new Engin(engineNumber, numberOfStroke);
-                    AutoRickshow autoRickshow = new AutoRickshow(numberPlate, modelNumber, engin, "3", fuel, safety);
-                    vehicles.put(autoRickshow.getNumber_plate(), autoRickshow.getVehicleDetails());
+                    AutoRickshaw autoRickshaw = new AutoRickshaw(numberPlate, modelNumber, engin, "3", fuel, safety);
+                    vehicles.put(autoRickshaw.getNumber_plate(), autoRickshaw);
                     System.out.println("Vehicle Add Successfully");
-                    autoRickshawsList.add(autoRickshow);
-                    printVehicle(autoRickshow.getNumber_plate());
+                    printVehicle(autoRickshaw.getNumber_plate());
 
-                } else if (vehicle.equals("C")&&checkHelmet(safety,vehicle)) {
+                } else if (vehicle.equals("C") && checkHelmet(safety, vehicle)) {
                     Engin engin = new Engin(engineNumber, numberOfStroke);
                     Car car = new Car(numberPlate, modelNumber, engin, "4", fuel, safety);
-                    vehicles.put(car.getNumber_plate(), car.getVehicleDetails());
+                    vehicles.put(car.getNumber_plate(), car);
                     System.out.println("Vehicle Add Successfully");
-                    carsList.add(car);
                     printVehicle(car.getNumber_plate());
 
-                } else if (vehicle.equals("B") && checkFuel(fuel)&&checkHelmet(safety,vehicle)) {
+                } else if (vehicle.equals("B") && checkFuel(fuel) && checkHelmet(safety, vehicle)) {
                     Engin engin = new Engin(engineNumber, numberOfStroke);
                     Bus bus = new Bus(numberPlate, modelNumber, engin, "2", fuel, safety);
-                    vehicles.put(bus.getNumber_plate(), bus.getVehicleDetails());
+                    vehicles.put(bus.getNumber_plate(), bus);
                     System.out.println("Vehicle Add Successfully");
-                    busesList.add(bus);
                     printVehicle(bus.getNumber_plate());
 
-                } else if (vehicle.equals("L") && checkFuel(fuel)&&checkHelmet(safety,vehicle)) {
+                } else if (vehicle.equals("L") && checkFuel(fuel) && checkHelmet(safety, vehicle)) {
                     Engin engin = new Engin(engineNumber, numberOfStroke);
                     Lorry lorry = new Lorry(numberPlate, modelNumber, engin, "2", fuel, safety);
-                    vehicles.put(lorry.getNumber_plate(), lorry.getVehicleDetails());
+                    vehicles.put(lorry.getNumber_plate(), lorry);
                     System.out.println("Vehicle Add Successfully");
-                    lorriesList.add(lorry);
                     printVehicle(lorry.getNumber_plate());
 
-                } else if (vehicle.equals("T") && checkFuel(fuel)&&checkHelmet(safety,vehicle)) {
+                } else if (vehicle.equals("T") && checkFuel(fuel) && checkHelmet(safety, vehicle)) {
                     Engin engin = new Engin(engineNumber, numberOfStroke);
                     Truck truck = new Truck(numberPlate, modelNumber, engin, "2", fuel, safety);
-                    vehicles.put(truck.getNumber_plate(), truck.getVehicleDetails());
+                    vehicles.put(truck.getNumber_plate(), truck);
                     System.out.println("Vehicle Add Successfully");
-                    trucksList.add(truck);
                     printVehicle(truck.getNumber_plate());
 
                 } else {
@@ -316,6 +366,7 @@ public class Main {
                 }
 
             } else if (input.equals("4")) {
+                System.out.println("Enter Vehicle Number :");
                 String numberPlate = in.nextLine();
                 if (checkNumberPlate(numberPlate) && checkVehicleAvailable(numberPlate)) {
                     deleteVehicle(numberPlate);
